@@ -1,16 +1,16 @@
-# T-FLIPFLOP-POSEDGE
+# EXPERIMENT NO: 9 T-FLIPFLOP-POSEDGE
 
-**AIM:**
+## AIM:
 
 To implement  T flipflop using verilog and validating their functionality using their functional tables
 
-**SOFTWARE REQUIRED:**
+## SOFTWARE REQUIRED:
 
 Quartus prime
 
-**THEORY**
+## THEORY
 
-**T Flip-Flop**
+### T Flip-Flop
 
 T flip-flop is the simplified version of JK flip-flop. It is obtained by connecting the same input ‘T’ to both inputs of JK flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of T flip-flop is shown in the following figure.
 
@@ -26,17 +26,48 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
  
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
-**Procedure**
+## Procedure
+1. Inputs:
+clk: Clock signal.
+rst_n: Active-low asynchronous reset signal.
+t: Toggle input.
+2. Outputs:
+q: Flip-flop output.
+q_bar: Complementary output.
+3. Operation:
+On each rising edge of clk:
+If rst_n is active (not asserted), reset q to 0.
+If rst_n is inactive (asserted), toggle q if t is high; otherwise, keep q unchanged.
+Compute q_bar as the complement of q.
+4. End of procedure.
 
-/* write all the steps invloved */
+## PROGRAM
 
-**PROGRAM**
+Program for flipflops and verify its truth table in quartus using Verilog programming.   
+Developed by:ARCHANA T  
+RegisterNumber:212223240013  
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+module tflipflop( input clk, rst_n, input t,  
+output reg q,  
+output q_bar  
+);  
+always@(posedge clk)   
+begin   
+if(!rst_n)  
+q<=0;  
+else   
+begin   
+q<=(t?~q:q);   
+end   
+end   
+assign q_bar = ~q;   
+endmodule   
 
-**RTL LOGIC FOR FLIPFLOPS**
+## RTL LOGIC FOR FLIPFLOPS
+![t flipflop diagram](https://github.com/ARCHANAT1305/T-FLIPFLOP-POSEDGE/assets/145975189/a78e289e-f401-4c78-a729-76f8fa79fcd2)
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+## TIMING DIGRAMS FOR FLIP FLOPS
+![t flipflop](https://github.com/ARCHANAT1305/T-FLIPFLOP-POSEDGE/assets/145975189/9d6ea480-c385-4957-858a-ac4d4bfbf75e)
 
-**RESULTS**
+## RESULTS
+Thus the program executed successfully.
